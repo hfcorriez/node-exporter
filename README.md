@@ -2,13 +2,13 @@
 
 Use modules exporter for global use.
 
-We always need load modules with follow codes:
+We always need load modules with following codes:
 
 ```js
 var email = require('../../helpers/email')
 ```
 
-if I create more directories, I will angry with using the absolute path. So exporter is global definition for you.
+If create much more files and directories, I will angry with using the absolute path. So there is a exporter, it is global definition for you.
 
 Load modules:
 
@@ -87,7 +87,7 @@ $('allHelpers', __dirname + '/helpers', true);
 
 ## Use exporter
 
-In your process file or Express controller
+In your process file or `Express` controller
 
 ```js
 var $ = require('exporter');

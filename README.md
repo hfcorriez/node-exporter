@@ -8,7 +8,7 @@ We always need load modules with follow codes:
 var email = require('../../helpers/email')
 ```
 
-if I create more directories, I will angry with using the absolute path. So exporter is global definition for you
+if I create more directories, I will angry with using the absolute path. So exporter is global definition for you.
 
 Load modules:
 
@@ -36,95 +36,23 @@ npm install exporter
 
 # Usage
 
-## Export Variables
+## Export
 
-In bootstrap file
+In bootstrap file, such as `app.js` in Express.
+
+### Variables export
 
 ```js
 var $ = require('exporter');
 
+// Load with variables
 $.debug = true;
 $.env = process.ENV['NODE_ENV'];
 ```
 
-In process file
+### Load file or directory
 
-```js
-var $ = require('exporter');
-
-if ($.debug && $.env == 'product') {
-    // Some logic
-}
-```
-
-## Export file
-
-Export:
-
-```js
-var $ = require('exporter');
-
-$.uploader = $(__dirname + '/helper/uploader');
-```
-
-Or
-
-```js
-var $ = require('exporter');
-
-$('uploader', __dirname + '/helper/uploader.js');
-```
-
-Use exporter:
-
-```js
-var $ = require('exporter');
-
-// Use uploader as module
-$.uploader.upFile(tmp_file);
-```
-
-
-## Export directory
-
-The project structure:
-
-```
-- app.js
-- helpers/
-  - uploader.js
-  - image.js
-  - email.js
-```
-
-Export:
-
-```js
-var $ = require('exporter');
-
-$.helpers = $(__dirname + './helpers');
-```
-
-Or
-
-```js
-var $ = require('exporter');
-
-$('helpers', __dirname + '/helpers');
-```
-
-Use exporter in your code:
-
-```js
-var $ = require('exporter');
-
-// Use email helper
-$.helpers.email('hfcorriez@gmail.com');
-```
-
-## Export directory recursive
-
-The project structure:
+Project structure such as:
 
 ```
 - app.js
@@ -136,30 +64,62 @@ The project structure:
     - guid.js
 ```
 
-Export:
+Export
 
 ```js
-var $ = require('exporter');
+// Set module directly
+$.uploader = require('./helpers/uploader');
 
-$.helpers = $(__dirname + './helpers', true);
+// Or use exporter
+$.email = $(__dirname + '/helpers/email.js');
+
+// Export modules in directory
+$.helpers = $(__dirname + './helpers');
+
+// Export modules recursive in directory
+$('allHelpers', __dirname + '/helpers', true);
 ```
 
-Or
+## Use exporter
+
+In your process file or Express controller
 
 ```js
 var $ = require('exporter');
 
-$('helpers', __dirname + '/helpers', true);
+if ($.debug && $.env == 'product') {
+    // Some logic
+}
+
+var guid = $.allHelpers.tools.guid();
+var sendEmail = $.helpers.email;
+var uploader = $.uploader;
 ```
 
-Use exporter:
+## More
+
+In `Express` application. You can use to export all routes.
 
 ```js
 var $ = require('exporter');
 
-// Use email helper
-$.helpers.email('hfcorriez@gmail.com');
+$.routes = $(__dirname + '/routes', true);
+```
 
-// Use guid tool
-var guid = $.helpers.tools.guid();
+If you have the structure such as:
+
+```
+- routes/
+  - register.js
+  - api/
+    - users.js
+```
+
+And you can use it simply
+
+```js
+var $ = require('exporter');
+
+app.get('/register', $.routes.register);
+app.get('/api/users', $.routes.api.users);
 ```

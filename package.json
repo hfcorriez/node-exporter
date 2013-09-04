@@ -1,6 +1,6 @@
 {
   "name": "exporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Help export your modules by file or directory and store in global",
   "author": "hfcorriez <hfcorriez@gmail.com>",
   "licenses": [

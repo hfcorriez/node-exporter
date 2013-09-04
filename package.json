@@ -13,6 +13,8 @@
   "engines": {
     "node": "*"
   },
-  "dependencies": {
+  "devDependencies": {
+    "mocha": "*",
+    "expect.js": "*"
   }
 }

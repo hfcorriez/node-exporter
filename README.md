@@ -40,7 +40,7 @@ npm install exporter
 
 In bootstrap file, such as `app.js` in Express.
 
-### Variables export
+### Export variables
 
 ```js
 var $ = require('exporter');
@@ -50,7 +50,7 @@ $.debug = true;
 $.env = process.ENV['NODE_ENV'];
 ```
 
-### Load file or directory
+### Export file or directory
 
 Project structure such as:
 

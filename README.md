@@ -8,7 +8,7 @@ We always need load modules with follow codes:
 var email = require('../../helpers/email')
 ```
 
-if I create more directories, I will angry with use the absolute path. So exporter is global definetion for you
+if I create more directories, I will angry with using the absolute path. So exporter is global definition for you
 
 Load modules:
 

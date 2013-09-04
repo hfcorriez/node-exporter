@@ -50,7 +50,7 @@ $.debug = true;
 $.env = process.ENV['NODE_ENV'];
 ```
 
-### Export file or directory
+### Export modules from file or directory
 
 Project structure such as:
 
@@ -72,6 +72,11 @@ $.uploader = require('./helpers/uploader');
 
 // Or use exporter
 $.email = $(__dirname + '/helpers/email.js');
+
+// And it's same as follow
+
+// Or use function export only
+$('email', __dirname + '/helpers/email.js');
 
 // Export modules in directory
 $.helpers = $(__dirname + './helpers');

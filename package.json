@@ -1,0 +1,18 @@
+{
+  "name": "exporter",
+  "version": "0.0.1",
+  "description": "Help export your modules by file or directory and store in global",
+  "author": "hfcorriez <hfcorriez@gmail.com>",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/hfcorriez/node-exporter/blob/master/LICENSE"
+    }
+  ],
+  "homepage": "http://github.com/hfcorriez/node-exporter",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+  }
+}
